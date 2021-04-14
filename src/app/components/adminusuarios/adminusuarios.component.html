@@ -1,0 +1,114 @@
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">Usuarios</h1>
+      <p class="lead">Aqui puedes ver los usuarios de la base de datos.</p>
+    </div>
+  </div>
+  <table class="table table-bordered">
+    <thead>
+        <tr>
+          <th scope="col">nombre</th>
+          <th scope="col">correo</th>
+          <th scope="col">rol</th>
+          <th scope="col">acción</th>
+        </tr>
+      </thead>
+    <tbody>
+        <tr *ngFor="let usuario of usuarios">
+          <td>{{usuario.nombre}}</td>
+          <td>{{usuario.correo}}</td>
+          <td>{{usuario.rol}}</td>
+          <td><img class="imagenIcono pointer" (click)="eliminarUsuario(usuario)" src="assets/img/borraricon.png" width="20" height="20" alt="">
+          </td>
+        </tr>
+       
+      </tbody>
+  </table>
+
+
+
+  <h4>Ingresar datos del usuario a crear <small>en el siguiente formulario:</small></h4>
+<hr>
+<form autocomplete="off" [formGroup]="forma" (ngSubmit)="crearUsuario()">
+
+  <div>
+
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Nombre</label>
+      <div class="col-8">
+
+        <input class="form-control"
+               type="text"
+               placeholder="Nombre"
+               formControlName="nombre">
+      </div>
+    </div>
+
+   
+
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Correo</label>
+    <div class="col-md-8">
+
+      <input class="form-control"
+             type="email"
+             placeholder="Correo electrónico"
+             formControlName="correo">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Contraseña</label>
+    <div class="col-8">
+
+      <input class="form-control"
+             type="password"
+             placeholder="contraseña"
+             formControlName="password">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Rol</label>
+    <div class="col-8">
+
+      <input class="form-control"
+             type="text"
+             placeholder="Rol"
+             formControlName="rol">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Estado</label>
+    <div class="col-8">
+
+      <input class="form-control"
+             type="text"
+             placeholder="Estado"
+             formControlName="estado">
+    </div>
+  </div>
+
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">&nbsp;</label>
+    <div class="input-group col-md-8">
+      <button type="submit" class="btn btn-outline-primary">
+        Crear un nuevo Usuario
+      </button>
+    </div>
+  </div>
+
+</form>
+
+<hr>
+<pre>
+    Estado del formulario : {{forma.valid}}
+    <br>
+    Status: {{forma.status}}
+</pre>
+
+{{forma.value | json}}

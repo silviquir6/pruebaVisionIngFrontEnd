@@ -1,0 +1,6 @@
+# Readme 
+
+Por favor ejecutar
+...
+npm install
+...
